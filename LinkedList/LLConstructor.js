@@ -18,7 +18,7 @@ class LinkedList {
         if(!this.head){
             this.head = newNode;
             this.tail = newNode;
-            this.length = 1;
+            // this.length = 1;
         }else {
             this.tail.next = newNode;
             this.tail = newNode
@@ -27,8 +27,30 @@ class LinkedList {
         return this
         
     }
+
+    pop() {
+        if(!this.head){
+            return undefined;
+        }else if(this.head == this.tail){
+            this.head = null;
+            this.tail = null;
+        }else{
+            let temp = this.head;
+            while(temp.next.next){
+                temp = temp.next;
+            }
+            this.tail = temp;
+            temp.next = null;
+            
+        }
+        this.length--;           
+        return this;
+    }
 }
 
 const myLinkedList = new LinkedList(7);
-console.log(myLinkedList.push(4))
 console.log(myLinkedList)
+myLinkedList.push(4)
+console.log(myLinkedList.push(8))
+console.log(myLinkedList.pop());
+
