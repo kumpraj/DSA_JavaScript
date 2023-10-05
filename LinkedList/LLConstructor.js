@@ -61,13 +61,34 @@ class LinkedList {
         this.length++;
         return this;
     }
+
+    // remove the first item in LL
+    shift(){
+        
+        // if no items
+        if(!this.head){
+            return undefined;            
+        }
+
+        let temp = this.head;
+        this.head = this.head.next;
+        temp.next = null;
+        this.length--;
+
+        // to handle if there was a single node
+        if(this.length == 0){
+            this.tail = null;
+        }
+        return temp;
+        
+    }
 }
 
 const myLinkedList = new LinkedList(7);
-console.log(myLinkedList.pop())
+// console.log(myLinkedList.pop())
 
-console.log(myLinkedList.unshift(4))
-// console.log(myLinkedList.push(8))
+console.log(myLinkedList.push(8))
+console.log(myLinkedList.shift())
 // console.log(myLinkedList.pop());
 // console.log(myLinkedList.pop());
 
