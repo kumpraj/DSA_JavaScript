@@ -46,11 +46,28 @@ class LinkedList {
         this.length--;           
         return this;
     }
+
+    // adding a new node in the beginning of LL
+    unshift(value) {
+        const newNode = new Node(value);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        }else {
+            newNode.next = this.head;
+            this.head = newNode;
+
+        }
+        this.length++;
+        return this;
+    }
 }
 
 const myLinkedList = new LinkedList(7);
-console.log(myLinkedList)
-myLinkedList.push(4)
-console.log(myLinkedList.push(8))
-console.log(myLinkedList.pop());
+console.log(myLinkedList.pop())
+
+console.log(myLinkedList.unshift(4))
+// console.log(myLinkedList.push(8))
+// console.log(myLinkedList.pop());
+// console.log(myLinkedList.pop());
 
