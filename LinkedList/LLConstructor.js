@@ -85,20 +85,26 @@ class LinkedList {
 
     // to fetch a node by index
     get(index) {
-        if(index< 0 || index> this.length){
+        if(index< 0 || index>= this.length){
             return undefined;
         }
 
         let temp = this.head;
-        for(let i = 0; i< this.length; i++){
-            if(i === index){
-                return temp;
-            }else{
+        for(let i = 0; i< index; i++){
                 temp = temp.next;
-            }
-            
-        }
+        }        
         return temp;
+    }
+
+    // to set a value to a node at an index
+    set(index,value){
+        const node = this.get(index);
+        if(node){
+            node.value = value;
+            return true;
+        }
+
+        return false;
     }
 }
 
@@ -107,7 +113,9 @@ const myLinkedList = new LinkedList(7);
 
 console.log(myLinkedList.push(8))
 console.log(myLinkedList.push(9))
-console.log(myLinkedList.get(2));
+// console.log(myLinkedList.get(2));
+console.log(myLinkedList.set(0,77));
+console.log(myLinkedList)
 // console.log(myLinkedList.shift())
 // console.log(myLinkedList.pop());
 // console.log(myLinkedList.pop());
