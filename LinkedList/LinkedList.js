@@ -106,15 +106,35 @@ class LinkedList {
 
         return false;
     }
+
+    // to insert a node in the LL
+    insert(index,value){
+        if(index == 0) {
+            return this.unshift(value)
+        }
+        if(index == this.length){
+            return this.push(value);
+        }
+        if(index < 0 || index > this.length) return false;
+
+        const newNode = new Node(value);
+        const temp = this.get(index-1);
+        newNode.next = temp.next;
+        temp.next = newNode;
+        this.length++;
+
+        return true;
+    }
 }
 
-const myLinkedList = new LinkedList(7);
+const myLinkedList = new LinkedList(0);
 // console.log(myLinkedList.pop())
 
-console.log(myLinkedList.push(8))
-console.log(myLinkedList.push(9))
+console.log(myLinkedList.push(1))
+console.log(myLinkedList.insert(2,2));
+// console.log(myLinkedList.push(9))
 // console.log(myLinkedList.get(2));
-console.log(myLinkedList.set(0,77));
+// console.log(myLinkedList.set(0,77));
 console.log(myLinkedList)
 // console.log(myLinkedList.shift())
 // console.log(myLinkedList.pop());
