@@ -140,21 +140,39 @@ class LinkedList {
         this.length--;
         return temp;
     }
+
+    // reverse the linked list
+    reverse(){
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
+        let next = temp.next;
+        let prev = null;
+
+        for(let i =0; i< this.length; i++){
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+        return this;
+    }
 }
 
-const myLinkedList = new LinkedList(0);
+const myLinkedList = new LinkedList(1);
+myLinkedList.push(2)
+myLinkedList.push(3)
+myLinkedList.push(4)
+
+
+console.log(myLinkedList);
+console.log(myLinkedList.reverse());
 // console.log(myLinkedList.pop())
-
-console.log(myLinkedList.push(1))
+// console.log(myLinkedList.remove(1));
 // console.log(myLinkedList.insert(2,2));
-console.log(myLinkedList.push(9));
-console.log(myLinkedList.push(10));
-
-console.log(myLinkedList.remove(1));
-
 // console.log(myLinkedList.get(2));
 // console.log(myLinkedList.set(0,77));
-console.log(myLinkedList)
 // console.log(myLinkedList.shift())
 // console.log(myLinkedList.pop());
 // console.log(myLinkedList.pop());
