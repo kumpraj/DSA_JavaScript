@@ -40,13 +40,43 @@ class BST {
             }
 
             return this;
-        }
     }
+
+    contains(value){
+        if (this.root === null) return false;
+
+        let temp = this.root;
+        while(temp){
+            if(value < temp.value){
+                temp = temp.left;
+            }else if(value > temp.value){
+                temp = temp.right;
+            }else{
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    minValueNode(currentNode){
+        
+        while(currentNode.left){
+            currentNode = currentNode.left;
+        }
+        return currentNode;
+    }
+}
 
 
 let myBst = new BST();
 myBst.insert(50);
 myBst.insert(45);
 myBst.insert(40);
+myBst.insert(46);
 myBst.insert(55);
+myBst.insert(51);
 console.log(myBst.insert(60));
+console.log(myBst.contains(51));
+console.log(myBst.minValueNode(myBst.root));
+console.log(myBst.minValueNode(myBst.root.right));
