@@ -31,20 +31,25 @@ class LinkedList {
     pop() {
         if(!this.head){
             return undefined;
-        }else if(this.head == this.tail){
-            this.head = null;
-            this.tail = null;
-        }else{
-            let temp = this.head;
-            while(temp.next.next){
-                temp = temp.next;
-            }
-            this.tail = temp;
-            temp.next = null;
-            
         }
-        this.length--;           
-        return this;
+        let temp = this.head;
+        let pre = this.head;
+
+        while(temp.next){
+            pre = temp;
+            temp = temp.next;
+        }
+
+        this.tail = pre;
+        this.tail.next = null;
+        this.length--;
+
+        if(this.length === 0){
+            this.tail = null;
+            this.head = null;
+        }
+
+        return temp;
     }
 
     // adding a new node in the beginning of LL
