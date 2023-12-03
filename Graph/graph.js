@@ -19,13 +19,29 @@ class Graph {
         }
         return false;
     }
+
+    removeEdge(vertex1, vertex2){
+        if(this.adjacencyList[vertex1] && this.adjacencyList[vertex2]){
+            this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter((v => v !== vertex2)) 
+            this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((v => v !== vertex1))
+            return true;
+        }
+        return false;
+    }
 }
 
 const myGraph = new Graph();
 myGraph.addVertex('A');
 myGraph.addVertex('B');
-console.log(myGraph.addEdge('A','B'));
-console.log(myGraph.addEdge('A','C'));
-
-
+myGraph.addVertex('C');
+myGraph.addEdge('A','B')
+myGraph.addEdge('B','C')
+myGraph.addEdge('A','C')
 console.log(myGraph);
+console.log(myGraph.removeEdge('A','B'));
+console.log(myGraph);
+console.log(myGraph.removeEdge('A','D'));
+
+
+
+
