@@ -28,19 +28,33 @@ class Graph {
         }
         return false;
     }
+
+    removeVertext(vertex){
+        if(!this.adjacencyList[vertex]) return undefined;
+
+        while(this.adjacencyList[vertex].length){
+            let temp = this.adjacencyList[vertex].pop();
+            this.removeEdge(vertex, temp);
+        }
+        delete this.adjacencyList[vertex];
+        return this;
+    }
+
+
 }
 
 const myGraph = new Graph();
 myGraph.addVertex('A');
 myGraph.addVertex('B');
 myGraph.addVertex('C');
+myGraph.addVertex('D');
 myGraph.addEdge('A','B')
-myGraph.addEdge('B','C')
 myGraph.addEdge('A','C')
+myGraph.addEdge('A','D')
+myGraph.addEdge('B','D')
+myGraph.addEdge('C','D')
 console.log(myGraph);
-console.log(myGraph.removeEdge('A','B'));
-console.log(myGraph);
-console.log(myGraph.removeEdge('A','D'));
+console.log(myGraph.removeVertext('D'));
 
 
 
