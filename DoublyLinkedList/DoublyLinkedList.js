@@ -27,9 +27,31 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
+
+    pop(){
+        if(!this.head) return undefined;
+        
+        let temp = this.tail;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null
+        }else{
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            temp.prev = null;
+        }
+        this.length--;
+        return temp;
+        
+    }
 }
 
 let myDLL = new DoublyLinkedList(1);
+myDLL.push(2);
+
+console.log(myDLL.pop());
 console.log(myDLL);
-console.log(myDLL.push(2));
-console.log(myDLL.push(3));
+
+console.log(myDLL.pop());
+console.log(myDLL.pop());
+console.log(myDLL);
