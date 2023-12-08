@@ -59,9 +59,30 @@ class DoublyLinkedList {
         this.length++;
         return this;
     }
+
+    shift(){
+        if(this.length === 0) return undefined     // same as if(!this.head)
+
+        let temp = this.head;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        }else {
+            
+            this.head = this.head.next;
+            this.head.prev = null;
+            temp.next = null
+        }
+        this.length--;
+        return temp;
+    }
+    
 }
 
 let myDLL = new DoublyLinkedList(1);
 myDLL.push(2);
-console.log(myDLL.unshift(0));
+console.log(myDLL.shift());
+console.log(myDLL.shift());
+console.log(myDLL.shift());
+console.log(myDLL)
 
