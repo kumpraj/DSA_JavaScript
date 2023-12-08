@@ -77,12 +77,30 @@ class DoublyLinkedList {
         return temp;
     }
     
+    get(index){
+        if(index >= this.length || index < 0) return undefined;
+
+        let temp = this.head;
+        if(index< this.length/2){
+            for(let i = 0; i< index; i++){
+                temp = temp.next;
+            }
+        }else {
+            temp = this.tail;
+            for(let i = this.length-1; i> index; i--){
+                temp= temp.prev;
+            }
+        }
+        return temp;
+
+    }
 }
 
 let myDLL = new DoublyLinkedList(1);
 myDLL.push(2);
-console.log(myDLL.shift());
-console.log(myDLL.shift());
-console.log(myDLL.shift());
-console.log(myDLL)
+myDLL.push(7);
+myDLL.push(9);
+myDLL.push(10);
+
+console.log(myDLL.get(1));
 
