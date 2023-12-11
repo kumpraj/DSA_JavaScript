@@ -94,13 +94,24 @@ class DoublyLinkedList {
         return temp;
 
     }
+
+    set(index, value){
+        let temp = this.get(index);
+
+        if(temp){
+            temp.value = value;
+            return true;
+        }
+        return false;
+    }
 }
 
 let myDLL = new DoublyLinkedList(1);
 myDLL.push(2);
 myDLL.push(7);
-myDLL.push(9);
-myDLL.push(10);
+console.log(myDLL);
+myDLL.set(2,99);
+console.log(myDLL.set(4,100));
+console.log(myDLL);
 
-console.log(myDLL.get(1));
 
